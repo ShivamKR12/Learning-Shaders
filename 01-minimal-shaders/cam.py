@@ -3,21 +3,27 @@ from direct.task import Task
 import os
 import sys
 
-# Ensure current, parent, and models directories are searchable
+# Ensure current, parent, and models directories are searchable across any sub-directory depth
 _this_dir = os.path.dirname(os.path.abspath(__file__))
 _parent_dir = os.path.dirname(_this_dir)
+_grandparent_dir = os.path.dirname(_parent_dir)
 
-for _p in [_this_dir, _parent_dir]:
-    if _p not in sys.path:
+for _p in [_this_dir, _parent_dir, _grandparent_dir]:
+    if _p and _p not in sys.path:
         sys.path.insert(0, _p)
 
 try:
     _mp = getModelPath()
     _mp.appendPath(".")
     _mp.appendPath("..")
+    _mp.appendPath("../..")
     _mp.appendPath("models")
     _mp.appendPath("../models")
-    _mp.appendPath(os.path.join(_parent_dir, "models"))
+    _mp.appendPath("../../models")
+    if _parent_dir:
+        _mp.appendPath(os.path.join(_parent_dir, "models"))
+    if _grandparent_dir:
+        _mp.appendPath(os.path.join(_grandparent_dir, "models"))
 except Exception:
     pass
 

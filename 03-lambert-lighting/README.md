@@ -62,32 +62,50 @@ $$\mathbf{C}_{final} = \mathbf{C}_{tex} \cdot \left(\max(\mathbf{N} \cdot \mathb
 
 ### Script Catalog
 
-| Script | Vertex Shader | Fragment Shader | Target Model | Lighting Model |
-|---|---|---|---|---|
-| `Lambert-Diffuse-Lighting.py` | `Lambert-Diffuse-Lighting.vert` | `Lambert-Diffuse-Lighting.frag` | `models/teapot` | Pure Lambertian $\max(\mathbf{N}\cdot\mathbf{L}, 0)$ |
-| `Lambert-Diffuse+Ambient-Lighting.py` | `Lambert-Diffuse+Ambient-Lighting.vert` | `Lambert-Diffuse+Ambient-Lighting.frag` | `models/teapot` | Diffuse + constant ambient fill term |
-| `Lambert-Diffuse+Ambient+BaseColor-Lighting.py` | `Lambert-Diffuse+Ambient+BaseColor-Lighting.vert` | `Lambert-Diffuse+Ambient+BaseColor-Lighting.frag` | `models/teapot` | Diffuse + Ambient + uniform material color |
-| `Lambert-Diffuse+Ambient+Texture-Lighting.py` | `Lambert-Diffuse+Ambient+Texture-Lighting.vert` | `Lambert-Diffuse+Ambient+Texture-Lighting.frag` | `models/panda-model` | Diffuse + Ambient + UV texture map |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
+|---|---|---|---|
+| [**`01-diffuse`**](01-diffuse/README.md) | `Lambert-Diffuse-Lighting.py` | `Lambert-Diffuse-Lighting.frag`, `Lambert-Diffuse-Lighting.vert` | Diffuse |
+| [**`02-diffuse-ambient`**](02-diffuse-ambient/README.md) | `Lambert-Diffuse+Ambient-Lighting.py` | `Lambert-Diffuse+Ambient-Lighting.frag`, `Lambert-Diffuse+Ambient-Lighting.vert` | Diffuse Ambient |
+| [**`03-diffuse-ambient-base-color`**](03-diffuse-ambient-base-color/README.md) | `Lambert-Diffuse+Ambient+BaseColor-Lighting.py` | `Lambert-Diffuse+Ambient+BaseColor-Lighting.frag`, `Lambert-Diffuse+Ambient+BaseColor-Lighting.vert` | Diffuse Ambient Base Color |
+| [**`04-diffuse-ambient-texture`**](04-diffuse-ambient-texture/README.md) | `Lambert-Diffuse+Ambient+Texture-Lighting.py` | `Lambert-Diffuse+Ambient+Texture-Lighting.frag`, `Lambert-Diffuse+Ambient+Texture-Lighting.vert` | Diffuse Ambient Texture |
 
 ### Layout
 
 ```
 03-lambert-lighting/
-├── Lambert-Diffuse-Lighting.py                      # Pure diffuse driver
-├── Lambert-Diffuse-Lighting.vert                    # Normal transformation pass
-├── Lambert-Diffuse-Lighting.frag                    # Raw N dot L dot-product lighting
-├── Lambert-Diffuse+Ambient-Lighting.py              # Diffuse + Ambient driver
-├── Lambert-Diffuse+Ambient-Lighting.vert            # View space normal calculation
-├── Lambert-Diffuse+Ambient-Lighting.frag            # Evaluates N dot L + ambient factor
-├── Lambert-Diffuse+Ambient+BaseColor-Lighting.py    # Diffuse + Ambient + Base Color driver
-├── Lambert-Diffuse+Ambient+BaseColor-Lighting.vert  # Transforms normals
-├── Lambert-Diffuse+Ambient+BaseColor-Lighting.frag  # Tints with uniform surface albedo
-├── Lambert-Diffuse+Ambient+Texture-Lighting.py      # Textured diffuse driver
-├── Lambert-Diffuse+Ambient+Texture-Lighting.vert    # Supplies UVs and normals
-├── Lambert-Diffuse+Ambient+Texture-Lighting.frag    # Multiplies texel by lighting terms
-├── cam.py                                          # Free-fly camera controller
-├── Config.prc                                       # Runtime configuration
-└── README.md                                        # Documentation
+├── 01-diffuse/
+│   ├── Lambert-Diffuse-Lighting.py
+│   ├── Lambert-Diffuse-Lighting.frag
+│   ├── Lambert-Diffuse-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-diffuse-ambient/
+│   ├── Lambert-Diffuse+Ambient-Lighting.py
+│   ├── Lambert-Diffuse+Ambient-Lighting.frag
+│   ├── Lambert-Diffuse+Ambient-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 03-diffuse-ambient-base-color/
+│   ├── Lambert-Diffuse+Ambient+BaseColor-Lighting.py
+│   ├── Lambert-Diffuse+Ambient+BaseColor-Lighting.frag
+│   ├── Lambert-Diffuse+Ambient+BaseColor-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 04-diffuse-ambient-texture/
+│   ├── Lambert-Diffuse+Ambient+Texture-Lighting.py
+│   ├── Lambert-Diffuse+Ambient+Texture-Lighting.frag
+│   ├── Lambert-Diffuse+Ambient+Texture-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

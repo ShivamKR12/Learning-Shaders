@@ -61,32 +61,50 @@ $$\mathbf{C}_{final} = \mathbf{C}_{albedo} \cdot (\mathbf{I}_{ambient} + \mathbf
 
 ### Script Catalog
 
-| Script | Vertex Shader | Fragment Shader | Target Model | Model Features |
-|---|---|---|---|---|
-| `Phong-Diffuse+Specular-Lighting.py` | `Phong-Diffuse+Specular-Lighting.vert` | `Phong-Diffuse+Specular-Lighting.frag` | `models/teapot` | Diffuse + Phong specular highlight |
-| `Phong-Diffuse+Ambient+Specular-Lighting.py` | `Phong-Diffuse+Ambient+Specular-Lighting.vert` | `Phong-Diffuse+Ambient+Specular-Lighting.frag` | `models/teapot` | Complete Ambient + Diffuse + Specular |
-| `Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.py` | `Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.vert` | `Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.frag` | `models/teapot` | Ambient + Diffuse + Specular + Base Color tint |
-| `Phong-Diffuse+Ambient+Specular+Texture-Lighting.py` | `Phong-Diffuse+Ambient+Specular+Texture-Lighting.vert` | `Phong-Diffuse+Ambient+Specular+Texture-Lighting.frag` | `models/panda-model` | Ambient + Diffuse + Specular + UV Texture map |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
+|---|---|---|---|
+| [**`01-diffuse-specular`**](01-diffuse-specular/README.md) | `Phong-Diffuse+Specular-Lighting.py` | `Phong-Diffuse+Specular-Lighting.frag`, `Phong-Diffuse+Specular-Lighting.vert` | Diffuse Specular |
+| [**`02-diffuse-ambient-specular`**](02-diffuse-ambient-specular/README.md) | `Phong-Diffuse+Ambient+Specular-Lighting.py` | `Phong-Diffuse+Ambient+Specular-Lighting.frag`, `Phong-Diffuse+Ambient+Specular-Lighting.vert` | Diffuse Ambient Specular |
+| [**`03-diffuse-ambient-specular-base-color`**](03-diffuse-ambient-specular-base-color/README.md) | `Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.py` | `Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.frag`, `Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.vert` | Diffuse Ambient Specular Base Color |
+| [**`04-diffuse-ambient-specular-texture`**](04-diffuse-ambient-specular-texture/README.md) | `Phong-Diffuse+Ambient+Specular+Texture-Lighting.py` | `Phong-Diffuse+Ambient+Specular+Texture-Lighting.frag`, `Phong-Diffuse+Ambient+Specular+Texture-Lighting.vert` | Diffuse Ambient Specular Texture |
 
 ### Layout
 
 ```
 04-phong-lighting/
-├── Phong-Diffuse+Specular-Lighting.py                      # Diffuse + Specular driver
-├── Phong-Diffuse+Specular-Lighting.vert                    # Calculates View & Normal vectors
-├── Phong-Diffuse+Specular-Lighting.frag                    # Computes reflection vector R and specular power
-├── Phong-Diffuse+Ambient+Specular-Lighting.py              # Full ADS model driver
-├── Phong-Diffuse+Ambient+Specular-Lighting.vert            # View space position and normal output
-├── Phong-Diffuse+Ambient+Specular-Lighting.frag            # Computes Ambient + Diffuse + Specular
-├── Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.py    # ADS + Base Color driver
-├── Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.vert  # Transforms geometry
-├── Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.frag  # Tints with surface albedo
-├── Phong-Diffuse+Ambient+Specular+Texture-Lighting.py      # ADS + Texture driver
-├── Phong-Diffuse+Ambient+Specular+Texture-Lighting.vert    # Supplies UVs, View vector, and Normals
-├── Phong-Diffuse+Ambient+Specular+Texture-Lighting.frag    # Multiplies diffuse with texture sampler
-├── cam.py                                                  # Free-fly camera controller
-├── Config.prc                                               # Runtime configuration
-└── README.md                                                # Documentation
+├── 01-diffuse-specular/
+│   ├── Phong-Diffuse+Specular-Lighting.py
+│   ├── Phong-Diffuse+Specular-Lighting.frag
+│   ├── Phong-Diffuse+Specular-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-diffuse-ambient-specular/
+│   ├── Phong-Diffuse+Ambient+Specular-Lighting.py
+│   ├── Phong-Diffuse+Ambient+Specular-Lighting.frag
+│   ├── Phong-Diffuse+Ambient+Specular-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 03-diffuse-ambient-specular-base-color/
+│   ├── Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.py
+│   ├── Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.frag
+│   ├── Phong-Diffuse+Ambient+Specular+BaseColor-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 04-diffuse-ambient-specular-texture/
+│   ├── Phong-Diffuse+Ambient+Specular+Texture-Lighting.py
+│   ├── Phong-Diffuse+Ambient+Specular+Texture-Lighting.frag
+│   ├── Phong-Diffuse+Ambient+Specular+Texture-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

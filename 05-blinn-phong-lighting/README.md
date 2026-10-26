@@ -57,22 +57,32 @@ $$\text{Attenuation} = \frac{1.0}{k_c + k_l \cdot d + k_q \cdot d^2}$$
 
 ### Script Catalog
 
-| Script | Vertex Shader | Fragment Shader | Target Model | Key Feature |
-|---|---|---|---|---|
-| `BlinnPhong-PointLight-Lighting.py` | `BlinnPhong-PointLight-Lighting.vert` | `BlinnPhong-PointLight-Lighting.frag` | `models/teapot`, `models/box`, `models/Sphere` | 3D point light position, distance attenuation, halfway vector highlights |
-| *(Shader component)* | *(Compatible with ViewSpace normal vert)* | `BlinnPhong-Diffuse+Ambient+Specular-Lighting.frag` | Any mesh | Directional Blinn-Phong fragment shader module |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
+|---|---|---|---|
+| [**`01-point-light`**](01-point-light/README.md) | `BlinnPhong-PointLight-Lighting.py` | `BlinnPhong-PointLight-Lighting.frag`, `BlinnPhong-PointLight-Lighting.vert` | Point Light |
+| [**`02-directional-halfway`**](02-directional-halfway/README.md) | *(None)* | `BlinnPhong-Diffuse+Ambient+Specular-Lighting.frag` | Directional Halfway |
 
 ### Layout
 
 ```
 05-blinn-phong-lighting/
-├── BlinnPhong-PointLight-Lighting.py                     # Point light scene driver (teapot + ground plane + light bulb)
-├── BlinnPhong-PointLight-Lighting.vert                   # Transforms world position and view vectors
-├── BlinnPhong-PointLight-Lighting.frag                   # Computes inverse-square attenuation and N dot H
-├── BlinnPhong-Diffuse+Ambient+Specular-Lighting.frag    # Directional Blinn-Phong fragment shader
-├── cam.py                                                # Free-fly camera controller
-├── Config.prc                                            # Runtime configuration
-└── README.md                                             # Documentation
+├── 01-point-light/
+│   ├── BlinnPhong-PointLight-Lighting.py
+│   ├── BlinnPhong-PointLight-Lighting.frag
+│   ├── BlinnPhong-PointLight-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-directional-halfway/
+│   ├── BlinnPhong-Diffuse+Ambient+Specular-Lighting.frag
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

@@ -77,42 +77,72 @@ Adheres to the glTF 2.0 standard:
 
 ### Script Catalog
 
-| Script | Vertex Shader | Fragment Shader | Target Model | Key Feature |
-|---|---|---|---|---|
-| `Pbr-SceneSetup-Rendering.py` | *(Built-in)* | *(Built-in)* | `models/Sphere.gltf` | Baseline glTF model loader |
-| `Pbr-ShadelessRendering-Rendering.py` | `Pbr-ShadelessRendering-Rendering.vert` | `Pbr-ShadelessRendering-Rendering.frag` | `models/Sphere.gltf` | Linear color space base pass |
-| `Pbr-Texture-Rendering.py` | `Pbr-Texture-Rendering.vert` | `Pbr-Texture-Rendering.frag` | `models/Sphere.gltf` | sRGB to Linear albedo decoding |
-| `Pbr-AmbientLighting-Lighting.py` | `Pbr-AmbientLighting-Lighting.vert` | `Pbr-AmbientLighting-Lighting.frag` | `models/Sphere.gltf` | Diffuse ambient with energy conservation |
-| `Pbr-CookTorranceBrdf-Lighting.py` | `Pbr-CookTorranceBrdf-Lighting.vert` | `Pbr-CookTorranceBrdf-Lighting.frag` | `models/Sphere.gltf` | Analytical Cook-Torrance BRDF (D, F, G) |
-| `Pbr-MerMap-Rendering.py` | `Pbr-MerMap-Rendering.vert` | `Pbr-MerMap-Rendering.frag` | `models/FancySphere.gltf` | Unpacks glTF Metallic-Roughness-AO texture |
-| `Pbr-Fog-Rendering.py` | `Pbr-Fog-Rendering.vert` | `Pbr-Fog-Rendering.frag` | `models/Sphere.gltf` | Linear/exponential distance fog blending |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
+|---|---|---|---|
+| [**`01-scene-setup`**](01-scene-setup/README.md) | `Pbr-SceneSetup-Rendering.py` | *(AutoShader)* | Scene Setup |
+| [**`02-shadeless-rendering`**](02-shadeless-rendering/README.md) | `Pbr-ShadelessRendering-Rendering.py` | `Pbr-ShadelessRendering-Rendering.frag`, `Pbr-ShadelessRendering-Rendering.vert` | Shadeless Rendering |
+| [**`03-ambient-lighting`**](03-ambient-lighting/README.md) | `Pbr-AmbientLighting-Lighting.py` | `Pbr-AmbientLighting-Lighting.frag`, `Pbr-AmbientLighting-Lighting.vert` | Ambient Lighting |
+| [**`04-cook-torrance-brdf`**](04-cook-torrance-brdf/README.md) | `Pbr-CookTorranceBrdf-Lighting.py` | `Pbr-CookTorranceBrdf-Lighting.frag`, `Pbr-CookTorranceBrdf-Lighting.vert` | Cook Torrance Brdf |
+| [**`05-texture`**](05-texture/README.md) | `Pbr-Texture-Rendering.py` | `Pbr-Texture-Rendering.frag`, `Pbr-Texture-Rendering.vert` | Texture |
+| [**`06-fog`**](06-fog/README.md) | `Pbr-Fog-Rendering.py` | `Pbr-Fog-Rendering.frag`, `Pbr-Fog-Rendering.vert` | Fog |
+| [**`07-mer-map`**](07-mer-map/README.md) | `Pbr-MerMap-Rendering.py` | `Pbr-MerMap-Rendering.frag`, `Pbr-MerMap-Rendering.vert` | Mer Map |
 
 ### Layout
 
 ```
 07-pbr-pipeline/
-├── Pbr-SceneSetup-Rendering.py              # PBR scene baseline setup
-├── Pbr-ShadelessRendering-Rendering.py      # Flat linear color driver
-├── Pbr-ShadelessRendering-Rendering.vert    # Model-to-clip transform
-├── Pbr-ShadelessRendering-Rendering.frag    # Unlit linear albedo output
-├── Pbr-Texture-Rendering.py                 # PBR texture mapping driver
-├── Pbr-Texture-Rendering.vert               # Passes UV and world coordinates
-├── Pbr-Texture-Rendering.frag               # Samples and converts albedo to linear
-├── Pbr-AmbientLighting-Lighting.py          # PBR ambient illumination driver
-├── Pbr-AmbientLighting-Lighting.vert        # Passes normal attributes
-├── Pbr-AmbientLighting-Lighting.frag        # Evaluates ambient energy balance
-├── Pbr-CookTorranceBrdf-Lighting.py         # Full Cook-Torrance BRDF driver
-├── Pbr-CookTorranceBrdf-Lighting.vert       # View & light vector calculation
-├── Pbr-CookTorranceBrdf-Lighting.frag       # Evaluates D(GGX), G(Schlick), F(Schlick)
-├── Pbr-MerMap-Rendering.py                  # Metallic-Roughness map driver
-├── Pbr-MerMap-Rendering.vert                # TBN and UV coordinate propagation
-├── Pbr-MerMap-Rendering.frag                # Samples MER map and computes PBR response
-├── Pbr-Fog-Rendering.py                     # Atmospheric fog driver
-├── Pbr-Fog-Rendering.vert                   # Computes distance to camera
-├── Pbr-Fog-Rendering.frag                   # Blends PBR surface into atmosphere
-├── cam.py                                   # Free-fly camera controller
-├── Config.prc                                # Runtime configuration
-└── README.md                                # Documentation
+├── 01-scene-setup/
+│   ├── Pbr-SceneSetup-Rendering.py
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-shadeless-rendering/
+│   ├── Pbr-ShadelessRendering-Rendering.py
+│   ├── Pbr-ShadelessRendering-Rendering.frag
+│   ├── Pbr-ShadelessRendering-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 03-ambient-lighting/
+│   ├── Pbr-AmbientLighting-Lighting.py
+│   ├── Pbr-AmbientLighting-Lighting.frag
+│   ├── Pbr-AmbientLighting-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 04-cook-torrance-brdf/
+│   ├── Pbr-CookTorranceBrdf-Lighting.py
+│   ├── Pbr-CookTorranceBrdf-Lighting.frag
+│   ├── Pbr-CookTorranceBrdf-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 05-texture/
+│   ├── Pbr-Texture-Rendering.py
+│   ├── Pbr-Texture-Rendering.frag
+│   ├── Pbr-Texture-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 06-fog/
+│   ├── Pbr-Fog-Rendering.py
+│   ├── Pbr-Fog-Rendering.frag
+│   ├── Pbr-Fog-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 07-mer-map/
+│   ├── Pbr-MerMap-Rendering.py
+│   ├── Pbr-MerMap-Rendering.frag
+│   ├── Pbr-MerMap-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

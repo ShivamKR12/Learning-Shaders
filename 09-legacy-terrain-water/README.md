@@ -73,64 +73,102 @@ $$\alpha_{edge} = \text{clamp}\left(\frac{\Delta z}{\text{shore\_fade\_distance}
 
 ### Script Catalog
 
-| Script | Terrain Shaders | Water Shaders | Key Feature |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
 |---|---|---|---|
-| `LegacyTerrain-SceneSetup-Rendering.py` | *(AutoShader)* | None | Loads `models/Terrain` with directional sunlight |
-| `LegacyTerrain-TextureSplatting-Rendering.py` | `*.vert`, `*.frag` | None | Multi-channel splatmap blending across terrain |
-| `LegacyTerrain-WaterPlane-Rendering.py` | `*.vert`, `*.frag` | Procedural Quad | Places flat water surface across the lake basin |
-| `LegacyTerrain-WaterShader-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Shaded water surface with wave movement |
-| `LegacyTerrain-Distortion-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | DuDv wave distortion on screen textures |
-| `LegacyTerrain-NormalMapping-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Animated normal maps with sun glints |
-| `LegacyTerrain-Fresnel-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Dynamic view-dependent Fresnel factor |
-| `LegacyTerrain-ReflectionAndRefraction-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Dual RTT reflection and refraction passes |
-| `LegacyTerrain-SoftEdges-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Depth buffer comparison for soft shorelines |
+| [**`01-scene-setup`**](01-scene-setup/README.md) | `LegacyTerrain-SceneSetup-Rendering.py` | *(AutoShader)* | Scene Setup |
+| [**`02-texture-splatting`**](02-texture-splatting/README.md) | `LegacyTerrain-TextureSplatting-Rendering.py` | `LegacyTerrain-TextureSplatting-Rendering.frag`, `LegacyTerrain-TextureSplatting-Rendering.vert` | Texture Splatting |
+| [**`03-water-plane`**](03-water-plane/README.md) | `LegacyTerrain-WaterPlane-Rendering-Water.py` | `LegacyTerrain-WaterPlane-Rendering.frag`, `LegacyTerrain-WaterPlane-Rendering.vert` | Water Plane |
+| [**`04-water-shader`**](04-water-shader/README.md) | `LegacyTerrain-WaterShader-Rendering-Water.py` | `LegacyTerrain-WaterShader-Rendering-Water.frag`, `LegacyTerrain-WaterShader-Rendering-Water.vert`, `LegacyTerrain-WaterShader-Rendering.frag`, `LegacyTerrain-WaterShader-Rendering.vert` | Water Shader |
+| [**`05-reflection-and-refraction`**](05-reflection-and-refraction/README.md) | `LegacyTerrain-ReflectionAndRefraction-Rendering.py` | `LegacyTerrain-ReflectionAndRefraction-Rendering-Water.frag`, `LegacyTerrain-ReflectionAndRefraction-Rendering-Water.vert`, `LegacyTerrain-ReflectionAndRefraction-Rendering.frag`, `LegacyTerrain-ReflectionAndRefraction-Rendering.vert` | Reflection And Refraction |
+| [**`06-distortion`**](06-distortion/README.md) | `LegacyTerrain-Distortion-Rendering.py` | `LegacyTerrain-Distortion-Rendering-Water.frag`, `LegacyTerrain-Distortion-Rendering-Water.vert`, `LegacyTerrain-Distortion-Rendering.frag`, `LegacyTerrain-Distortion-Rendering.vert` | Distortion |
+| [**`07-normal-mapping`**](07-normal-mapping/README.md) | `LegacyTerrain-NormalMapping-Rendering.py` | `LegacyTerrain-NormalMapping-Rendering-Water.frag`, `LegacyTerrain-NormalMapping-Rendering-Water.vert`, `LegacyTerrain-NormalMapping-Rendering.frag`, `LegacyTerrain-NormalMapping-Rendering.vert` | Normal Mapping |
+| [**`08-fresnel`**](08-fresnel/README.md) | `LegacyTerrain-Fresnel-Rendering.py` | `LegacyTerrain-Fresnel-Rendering-Water.frag`, `LegacyTerrain-Fresnel-Rendering-Water.vert`, `LegacyTerrain-Fresnel-Rendering.frag`, `LegacyTerrain-Fresnel-Rendering.vert` | Fresnel |
+| [**`09-soft-edges`**](09-soft-edges/README.md) | `LegacyTerrain-SoftEdges-Rendering.py` | `LegacyTerrain-SoftEdges-Rendering-Water.frag`, `LegacyTerrain-SoftEdges-Rendering-Water.vert`, `LegacyTerrain-SoftEdges-Rendering.frag`, `LegacyTerrain-SoftEdges-Rendering.vert` | Soft Edges |
 
 ### Layout
 
 ```
 09-legacy-terrain-water/
-├── LegacyTerrain-SceneSetup-Rendering.py                     # Baseline terrain setup driver
-├── LegacyTerrain-TextureSplatting-Rendering.py               # Splatting driver
-├── LegacyTerrain-TextureSplatting-Rendering.vert             # Splatting vertex pass
-├── LegacyTerrain-TextureSplatting-Rendering.frag             # RGBA splatmap weight blend
-├── LegacyTerrain-WaterPlane-Rendering.py                     # Water geometry driver
-├── LegacyTerrain-WaterPlane-Rendering.vert                   # Water plane transform
-├── LegacyTerrain-WaterPlane-Rendering.frag                   # Basic water surface output
-├── LegacyTerrain-WaterPlane-Rendering-Water.py               # Water plane mesh generator
-├── LegacyTerrain-WaterShader-Rendering.py                    # Combined terrain + water driver
-├── LegacyTerrain-WaterShader-Rendering.vert                  # Terrain vertex pass
-├── LegacyTerrain-WaterShader-Rendering.frag                  # Terrain fragment pass
-├── LegacyTerrain-WaterShader-Rendering-Water.py              # Standalone water test
-├── LegacyTerrain-WaterShader-Rendering-Water.vert            # Water wave vertex pass
-├── LegacyTerrain-WaterShader-Rendering-Water.frag            # Water surface fragment pass
-├── LegacyTerrain-Distortion-Rendering.py                     # DuDv distortion driver
-├── LegacyTerrain-Distortion-Rendering.vert                   # Terrain transform
-├── LegacyTerrain-Distortion-Rendering.frag                   # Terrain shading
-├── LegacyTerrain-Distortion-Rendering-Water.vert             # Projected texture coordinates
-├── LegacyTerrain-Distortion-Rendering-Water.frag             # DuDv ripple distortion
-├── LegacyTerrain-NormalMapping-Rendering.py                  # Normal mapping driver
-├── LegacyTerrain-NormalMapping-Rendering.vert                # Terrain transform
-├── LegacyTerrain-NormalMapping-Rendering.frag                # Terrain shading
-├── LegacyTerrain-NormalMapping-Rendering-Water.vert          # Water normal pass
-├── LegacyTerrain-NormalMapping-Rendering-Water.frag          # Tangent-space normal ripples
-├── LegacyTerrain-Fresnel-Rendering.py                        # Fresnel driver
-├── LegacyTerrain-Fresnel-Rendering.vert                      # Terrain transform
-├── LegacyTerrain-Fresnel-Rendering.frag                      # Terrain shading
-├── LegacyTerrain-Fresnel-Rendering-Water.vert                # View vector output
-├── LegacyTerrain-Fresnel-Rendering-Water.frag                # Evaluates Schlick Fresnel
-├── LegacyTerrain-ReflectionAndRefraction-Rendering.py        # Dual RTT reflection/refraction driver
-├── LegacyTerrain-ReflectionAndRefraction-Rendering.vert      # Terrain transform
-├── LegacyTerrain-ReflectionAndRefraction-Rendering.frag      # Terrain shading
-├── LegacyTerrain-ReflectionAndRefraction-Rendering-Water.vert# Screen-space RTT projection
-├── LegacyTerrain-ReflectionAndRefraction-Rendering-Water.frag# Mixes reflection and refraction
-├── LegacyTerrain-SoftEdges-Rendering.py                      # Soft edge driver
-├── LegacyTerrain-SoftEdges-Rendering.vert                    # Terrain transform
-├── LegacyTerrain-SoftEdges-Rendering.frag                    # Terrain shading
-├── LegacyTerrain-SoftEdges-Rendering-Water.vert              # Depth buffer projection
-├── LegacyTerrain-SoftEdges-Rendering-Water.frag              # Depth-based alpha fade
-├── cam.py                                                    # Free-fly camera controller
-├── Config.prc                                                # Runtime configuration
-└── README.md                                                 # Documentation
+├── 01-scene-setup/
+│   ├── LegacyTerrain-SceneSetup-Rendering.py
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-texture-splatting/
+│   ├── LegacyTerrain-TextureSplatting-Rendering.py
+│   ├── LegacyTerrain-TextureSplatting-Rendering.frag
+│   ├── LegacyTerrain-TextureSplatting-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 03-water-plane/
+│   ├── LegacyTerrain-WaterPlane-Rendering-Water.py
+│   ├── LegacyTerrain-WaterPlane-Rendering.py
+│   ├── LegacyTerrain-WaterPlane-Rendering.frag
+│   ├── LegacyTerrain-WaterPlane-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 04-water-shader/
+│   ├── LegacyTerrain-WaterShader-Rendering-Water.py
+│   ├── LegacyTerrain-WaterShader-Rendering.py
+│   ├── LegacyTerrain-WaterShader-Rendering-Water.frag
+│   ├── LegacyTerrain-WaterShader-Rendering-Water.vert
+│   ├── LegacyTerrain-WaterShader-Rendering.frag
+│   ├── LegacyTerrain-WaterShader-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 05-reflection-and-refraction/
+│   ├── LegacyTerrain-ReflectionAndRefraction-Rendering.py
+│   ├── LegacyTerrain-ReflectionAndRefraction-Rendering-Water.frag
+│   ├── LegacyTerrain-ReflectionAndRefraction-Rendering-Water.vert
+│   ├── LegacyTerrain-ReflectionAndRefraction-Rendering.frag
+│   ├── LegacyTerrain-ReflectionAndRefraction-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 06-distortion/
+│   ├── LegacyTerrain-Distortion-Rendering.py
+│   ├── LegacyTerrain-Distortion-Rendering-Water.frag
+│   ├── LegacyTerrain-Distortion-Rendering-Water.vert
+│   ├── LegacyTerrain-Distortion-Rendering.frag
+│   ├── LegacyTerrain-Distortion-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 07-normal-mapping/
+│   ├── LegacyTerrain-NormalMapping-Rendering.py
+│   ├── LegacyTerrain-NormalMapping-Rendering-Water.frag
+│   ├── LegacyTerrain-NormalMapping-Rendering-Water.vert
+│   ├── LegacyTerrain-NormalMapping-Rendering.frag
+│   ├── LegacyTerrain-NormalMapping-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 08-fresnel/
+│   ├── LegacyTerrain-Fresnel-Rendering.py
+│   ├── LegacyTerrain-Fresnel-Rendering-Water.frag
+│   ├── LegacyTerrain-Fresnel-Rendering-Water.vert
+│   ├── LegacyTerrain-Fresnel-Rendering.frag
+│   ├── LegacyTerrain-Fresnel-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 09-soft-edges/
+│   ├── LegacyTerrain-SoftEdges-Rendering.py
+│   ├── LegacyTerrain-SoftEdges-Rendering-Water.frag
+│   ├── LegacyTerrain-SoftEdges-Rendering-Water.vert
+│   ├── LegacyTerrain-SoftEdges-Rendering.frag
+│   ├── LegacyTerrain-SoftEdges-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

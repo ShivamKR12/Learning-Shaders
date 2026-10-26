@@ -56,28 +56,42 @@ python ShadelessSky-DynamicSkydome-Rendering.py
 
 ### Script Catalog
 
-| Script | Vertex Shader | Fragment Shader | Target Model | Key Feature |
-|---|---|---|---|---|
-| `ShadelessSky-StaticSkybox-Rendering.py` | `ShadelessSky-StaticSkybox-Rendering.vert` | `ShadelessSky-StaticSkybox-Rendering.frag` | Procedural Box | 6-sided cubic environment background |
-| `ShadelessSky-StaticSkydome-Rendering.py` | `ShadelessSky-StaticSkydome-Rendering.vert` | `ShadelessSky-StaticSkydome-Rendering.frag` | `models/SkyDome.gltf` | Panoramic 360° hemispherical skydome |
-| `ShadelessSky-DynamicSkydome-Rendering.py` | `ShadelessSky-DynamicSkydome-Rendering.vert` | `ShadelessSky-DynamicSkydome-Rendering.frag` | `models/DynamicSkyDome.gltf` | Dynamic day/night cycle, scrolling clouds, celestial tracking |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
+|---|---|---|---|
+| [**`01-static-skybox`**](01-static-skybox/README.md) | `ShadelessSky-StaticSkybox-Rendering.py` | `ShadelessSky-StaticSkybox-Rendering.frag`, `ShadelessSky-StaticSkybox-Rendering.vert` | Static Skybox |
+| [**`02-static-skydome`**](02-static-skydome/README.md) | `ShadelessSky-StaticSkydome-Rendering.py` | `ShadelessSky-StaticSkydome-Rendering.frag`, `ShadelessSky-StaticSkydome-Rendering.vert` | Static Skydome |
+| [**`03-dynamic-skydome`**](03-dynamic-skydome/README.md) | `ShadelessSky-DynamicSkydome-Rendering.py` | `ShadelessSky-DynamicSkydome-Rendering.frag`, `ShadelessSky-DynamicSkydome-Rendering.vert` | Dynamic Skydome |
 
 ### Layout
 
 ```
 08-sky-rendering/
-├── ShadelessSky-StaticSkybox-Rendering.py      # Cube skybox driver
-├── ShadelessSky-StaticSkybox-Rendering.vert    # Depth trick vertex transform
-├── ShadelessSky-StaticSkybox-Rendering.frag    # Samples environment cube faces
-├── ShadelessSky-StaticSkydome-Rendering.py     # Panoramic dome driver
-├── ShadelessSky-StaticSkydome-Rendering.vert   # Centers dome around camera
-├── ShadelessSky-StaticSkydome-Rendering.frag   # Panoramic celestial texture sampling
-├── ShadelessSky-DynamicSkydome-Rendering.py    # Animated dynamic sky driver
-├── ShadelessSky-DynamicSkydome-Rendering.vert  # Cloud UV translation & sun angles
-├── ShadelessSky-DynamicSkydome-Rendering.frag  # Multi-layer day/night blending
-├── cam.py                                      # Free-fly camera controller
-├── Config.prc                                  # Runtime configuration
-└── README.md                                   # Documentation
+├── 01-static-skybox/
+│   ├── ShadelessSky-StaticSkybox-Rendering.py
+│   ├── ShadelessSky-StaticSkybox-Rendering.frag
+│   ├── ShadelessSky-StaticSkybox-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-static-skydome/
+│   ├── ShadelessSky-StaticSkydome-Rendering.py
+│   ├── ShadelessSky-StaticSkydome-Rendering.frag
+│   ├── ShadelessSky-StaticSkydome-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 03-dynamic-skydome/
+│   ├── ShadelessSky-DynamicSkydome-Rendering.py
+│   ├── ShadelessSky-DynamicSkydome-Rendering.frag
+│   ├── ShadelessSky-DynamicSkydome-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

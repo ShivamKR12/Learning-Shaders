@@ -66,44 +66,74 @@ python Minimal-UVDistortion-Shader.py
 
 ### Script Catalog
 
-| Script | Vertex Shader | Fragment Shader | Target Model | Key Feature |
-|---|---|---|---|---|
-| `Minimal-Working-Shader.py` | `Minimal-Working-Shader.vert` | `Minimal-Working-Shader.frag` | `models/teapot` | MVP transformation, solid color output |
-| `Minimal-PassThrough-Shader.py` | `Minimal-PassThrough-Shader.vert` | `Minimal-PassThrough-Shader.frag` | `models/teapot` | Vertex attribute interpolation (`in`/`out`) |
-| `Minimal-Tint-Shader.py` | `Minimal-Tint-Shader.vert` | `Minimal-Tint-Shader.frag` | `models/teapot` | Engine-to-shader `uniform vec4` tint |
-| `Minimal-Pulse-Shader.py` | `Minimal-Pulse-Shader.vert` | `Minimal-Pulse-Shader.frag` | `models/teapot` | Dynamic time-based pulsing via `taskMgr` |
-| `Minimal-Texture-Shader.py` | `Minimal-Texture-Shader.vert` | `Minimal-Texture-Shader.frag` | `models/panda-model` | `sampler2D` lookup with UV mapping |
-| `Minimal-Alpha-Cutoff-Shader.py` | `Minimal-Alpha-Cutoff-Shader.vert` | `Minimal-Alpha-Cutoff-Shader.frag` | `models/smiley` | Hard alpha cutoff via fragment `discard` |
-| `Minimal-UVDistortion-Shader.py` | `Minimal-UVDistortion-Shader.vert` | `Minimal-UVDistortion-Shader.frag` | `models/panda-model` | Animated sine wave UV texture distortion |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
+|---|---|---|---|
+| [**`01-working-shader`**](01-working-shader/README.md) | `Minimal-Working-Shader.py` | `Minimal-Working-Shader.frag`, `Minimal-Working-Shader.vert` | Working Shader |
+| [**`02-pass-through`**](02-pass-through/README.md) | `Minimal-PassThrough-Shader.py` | `Minimal-PassThrough-Shader.frag`, `Minimal-PassThrough-Shader.vert` | Pass Through |
+| [**`03-tint`**](03-tint/README.md) | `Minimal-Tint-Shader.py` | `Minimal-Tint-Shader.frag`, `Minimal-Tint-Shader.vert` | Tint |
+| [**`04-pulse`**](04-pulse/README.md) | `Minimal-Pulse-Shader.py` | `Minimal-Pulse-Shader.frag`, `Minimal-Pulse-Shader.vert` | Pulse |
+| [**`05-texture`**](05-texture/README.md) | `Minimal-Texture-Shader.py` | `Minimal-Texture-Shader.frag`, `Minimal-Texture-Shader.vert` | Texture |
+| [**`06-alpha-cutoff`**](06-alpha-cutoff/README.md) | `Minimal-Alpha-Cutoff-Shader.py` | `Minimal-Alpha-Cutoff-Shader.frag`, `Minimal-Alpha-Cutoff-Shader.vert` | Alpha Cutoff |
+| [**`07-uv-distortion`**](07-uv-distortion/README.md) | `Minimal-UVDistortion-Shader.py` | `Minimal-UVDistortion-Shader.frag`, `Minimal-UVDistortion-Shader.vert` | Uv Distortion |
 
 ### Layout
 
 ```
 01-minimal-shaders/
-├── Minimal-Working-Shader.py            # Baseline solid color demo
-├── Minimal-Working-Shader.vert          # Minimal clip-space transform
-├── Minimal-Working-Shader.frag          # Flat color output
-├── Minimal-PassThrough-Shader.py        # Color attribute pass-through demo
-├── Minimal-PassThrough-Shader.vert      # Passes vertex colors to fragment stage
-├── Minimal-PassThrough-Shader.frag      # Renders interpolated vertex color
-├── Minimal-Tint-Shader.py               # Uniform tint demo
-├── Minimal-Tint-Shader.vert             # Passes UV & position
-├── Minimal-Tint-Shader.frag             # Multiplies base color with uniform tint
-├── Minimal-Pulse-Shader.py              # Time-varying uniform demo
-├── Minimal-Pulse-Shader.vert            # Passes geometry
-├── Minimal-Pulse-Shader.frag            # Calculates sin(time) brightness
-├── Minimal-Texture-Shader.py            # 2D Texture sampling demo
-├── Minimal-Texture-Shader.vert          # Supplies UV coordinates
-├── Minimal-Texture-Shader.frag          # Texture sampler lookup
-├── Minimal-Alpha-Cutoff-Shader.py       # Alpha test demo
-├── Minimal-Alpha-Cutoff-Shader.vert     # UV pass-through
-├── Minimal-Alpha-Cutoff-Shader.frag     # Discards fragments below alpha threshold
-├── Minimal-UVDistortion-Shader.py       # Animated texture ripple demo
-├── Minimal-UVDistortion-Shader.vert     # Passes texture coordinates
-├── Minimal-UVDistortion-Shader.frag     # Sine-modulated UV coordinate lookup
-├── cam.py                              # Free-fly Blender camera controller
-├── Config.prc                           # Panda3D window and model search paths
-└── README.md                            # Documentation
+├── 01-working-shader/
+│   ├── Minimal-Working-Shader.py
+│   ├── Minimal-Working-Shader.frag
+│   ├── Minimal-Working-Shader.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-pass-through/
+│   ├── Minimal-PassThrough-Shader.py
+│   ├── Minimal-PassThrough-Shader.frag
+│   ├── Minimal-PassThrough-Shader.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 03-tint/
+│   ├── Minimal-Tint-Shader.py
+│   ├── Minimal-Tint-Shader.frag
+│   ├── Minimal-Tint-Shader.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 04-pulse/
+│   ├── Minimal-Pulse-Shader.py
+│   ├── Minimal-Pulse-Shader.frag
+│   ├── Minimal-Pulse-Shader.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 05-texture/
+│   ├── Minimal-Texture-Shader.py
+│   ├── Minimal-Texture-Shader.frag
+│   ├── Minimal-Texture-Shader.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 06-alpha-cutoff/
+│   ├── Minimal-Alpha-Cutoff-Shader.py
+│   ├── Minimal-Alpha-Cutoff-Shader.frag
+│   ├── Minimal-Alpha-Cutoff-Shader.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 07-uv-distortion/
+│   ├── Minimal-UVDistortion-Shader.py
+│   ├── Minimal-UVDistortion-Shader.frag
+│   ├── Minimal-UVDistortion-Shader.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

@@ -70,59 +70,92 @@ $$\mathbf{T}(d) = e^{-\boldsymbol{\sigma}_a \cdot d}$$
 
 ### Script Catalog
 
-| Script | Terrain Shaders | Water Shaders | Key Feature |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
 |---|---|---|---|
-| `PbrTerrain-SceneSetup-Rendering.py` | *(Built-in)* | None | Baseline PBR landscape environment |
-| `PbrTerrain-TextureSplatting-Rendering.py` | `*.vert`, `*.frag` | None | Multi-material PBR terrain splatting |
-| `PbrTerrain-WaterPlane-Rendering.py` | `*.vert`, `*.frag` | Procedural Mesh | PBR-lit water plane surface |
-| `PbrTerrain-WaterShader-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Dynamic wave motion and surface shaders |
-| `PbrTerrain-Distortion-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Flowing DuDv ripple distortion |
-| `PbrTerrain-NormalMapping-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Tangent-space normal mapped wave glints |
-| `PbrTerrain-Fresnel-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Physical dielectric water Fresnel ($F_0 = 0.02$) |
-| `PbrTerrain-ReflectionAndRefraction-Rendering.py` | `*.vert`, `*.frag` | `*-Water.vert`, `*-Water.frag` | Full RTT reflections with physical absorption |
+| [**`01-scene-setup`**](01-scene-setup/README.md) | `PbrTerrain-SceneSetup-Rendering.py` | *(AutoShader)* | Scene Setup |
+| [**`02-texture-splatting`**](02-texture-splatting/README.md) | `PbrTerrain-TextureSplatting-Rendering.py` | `PbrTerrain-TextureSplatting-Rendering.frag`, `PbrTerrain-TextureSplatting-Rendering.vert` | Texture Splatting |
+| [**`03-water-plane`**](03-water-plane/README.md) | `PbrTerrain-WaterPlane-Rendering.py` | `PbrTerrain-WaterPlane-Rendering.frag`, `PbrTerrain-WaterPlane-Rendering.vert` | Water Plane |
+| [**`04-water-shader`**](04-water-shader/README.md) | `PbrTerrain-WaterShader-Rendering.py` | `PbrTerrain-WaterShader-Rendering-Water.frag`, `PbrTerrain-WaterShader-Rendering-Water.vert`, `PbrTerrain-WaterShader-Rendering.frag`, `PbrTerrain-WaterShader-Rendering.vert` | Water Shader |
+| [**`05-reflection-and-refraction`**](05-reflection-and-refraction/README.md) | `PbrTerrain-ReflectionAndRefraction-Rendering.py` | `PbrTerrain-ReflectionAndRefraction-Rendering-Water.frag`, `PbrTerrain-ReflectionAndRefraction-Rendering-Water.vert`, `PbrTerrain-ReflectionAndRefraction-Rendering.frag`, `PbrTerrain-ReflectionAndRefraction-Rendering.vert` | Reflection And Refraction |
+| [**`06-distortion`**](06-distortion/README.md) | `PbrTerrain-Distortion-Rendering-Water.py` | `PbrTerrain-Distortion-Rendering-Water.frag`, `PbrTerrain-Distortion-Rendering-Water.vert`, `PbrTerrain-Distortion-Rendering.frag`, `PbrTerrain-Distortion-Rendering.vert` | Distortion |
+| [**`07-normal-mapping`**](07-normal-mapping/README.md) | `PbrTerrain-NormalMapping-Rendering.py` | `PbrTerrain-NormalMapping-Rendering-Water.frag`, `PbrTerrain-NormalMapping-Rendering-Water.vert`, `PbrTerrain-NormalMapping-Rendering.frag`, `PbrTerrain-NormalMapping-Rendering.vert` | Normal Mapping |
+| [**`08-fresnel`**](08-fresnel/README.md) | `PbrTerrain-Fresnel-Rendering-Water.py` | `PbrTerrain-Fresnel-Rendering-Water.frag`, `PbrTerrain-Fresnel-Rendering-Water.vert`, `PbrTerrain-Fresnel-Rendering.frag`, `PbrTerrain-Fresnel-Rendering.vert` | Fresnel |
 
 ### Layout
 
 ```
 10-pbr-terrain-water/
-├── PbrTerrain-SceneSetup-Rendering.py                     # Baseline PBR terrain driver
-├── PbrTerrain-TextureSplatting-Rendering.py               # PBR terrain splatting driver
-├── PbrTerrain-TextureSplatting-Rendering.vert             # Terrain vertex pass
-├── PbrTerrain-TextureSplatting-Rendering.frag             # Multi-layer PBR material blend
-├── PbrTerrain-WaterPlane-Rendering.py                     # Water surface driver
-├── PbrTerrain-WaterPlane-Rendering.vert                   # Water plane transform
-├── PbrTerrain-WaterPlane-Rendering.frag                   # PBR water output
-├── PbrTerrain-WaterShader-Rendering.py                    # Combined terrain + water driver
-├── PbrTerrain-WaterShader-Rendering.vert                  # Terrain vertex pass
-├── PbrTerrain-WaterShader-Rendering.frag                  # Terrain fragment pass
-├── PbrTerrain-WaterShader-Rendering-Water.vert            # Wave animation vertex pass
-├── PbrTerrain-WaterShader-Rendering-Water.frag            # Microfacet water shading
-├── PbrTerrain-Distortion-Rendering.py                     # DuDv ripple driver
-├── PbrTerrain-Distortion-Rendering.vert                   # Terrain transform
-├── PbrTerrain-Distortion-Rendering.frag                   # Terrain shading
-├── PbrTerrain-Distortion-Rendering-Water.py               # Standalone distortion test
-├── PbrTerrain-Distortion-Rendering-Water.vert             # Screen coordinate projection
-├── PbrTerrain-Distortion-Rendering-Water.frag             # Flowing DuDv distortion
-├── PbrTerrain-NormalMapping-Rendering.py                  # Normal mapping driver
-├── PbrTerrain-NormalMapping-Rendering.vert                # Terrain transform
-├── PbrTerrain-NormalMapping-Rendering.frag                # Terrain shading
-├── PbrTerrain-NormalMapping-Rendering-Water.py            # Standalone normal test
-├── PbrTerrain-NormalMapping-Rendering-Water.vert          # Tangent frame setup
-├── PbrTerrain-NormalMapping-Rendering-Water.frag          # Dual normal map ripple glints
-├── PbrTerrain-Fresnel-Rendering.py                        # Fresnel driver
-├── PbrTerrain-Fresnel-Rendering.vert                      # Terrain transform
-├── PbrTerrain-Fresnel-Rendering.frag                      # Terrain shading
-├── PbrTerrain-Fresnel-Rendering-Water.py                  # Standalone Fresnel test
-├── PbrTerrain-Fresnel-Rendering-Water.vert                # View vector output
-├── PbrTerrain-Fresnel-Rendering-Water.frag                # Dielectric water Fresnel evaluation
-├── PbrTerrain-ReflectionAndRefraction-Rendering.py        # Dual RTT driver
-├── PbrTerrain-ReflectionAndRefraction-Rendering.vert      # Terrain transform
-├── PbrTerrain-ReflectionAndRefraction-Rendering.frag      # Terrain shading
-├── PbrTerrain-ReflectionAndRefraction-Rendering-Water.vert# Screen-space RTT projection
-├── PbrTerrain-ReflectionAndRefraction-Rendering-Water.frag# Mixes RTT textures with physical glints
-├── cam.py                                                 # Free-fly camera controller
-├── Config.prc                                             # Runtime configuration
-└── README.md                                              # Documentation
+├── 01-scene-setup/
+│   ├── PbrTerrain-SceneSetup-Rendering.py
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-texture-splatting/
+│   ├── PbrTerrain-TextureSplatting-Rendering.py
+│   ├── PbrTerrain-TextureSplatting-Rendering.frag
+│   ├── PbrTerrain-TextureSplatting-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 03-water-plane/
+│   ├── PbrTerrain-WaterPlane-Rendering.py
+│   ├── PbrTerrain-WaterPlane-Rendering.frag
+│   ├── PbrTerrain-WaterPlane-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 04-water-shader/
+│   ├── PbrTerrain-WaterShader-Rendering.py
+│   ├── PbrTerrain-WaterShader-Rendering-Water.frag
+│   ├── PbrTerrain-WaterShader-Rendering-Water.vert
+│   ├── PbrTerrain-WaterShader-Rendering.frag
+│   ├── PbrTerrain-WaterShader-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 05-reflection-and-refraction/
+│   ├── PbrTerrain-ReflectionAndRefraction-Rendering.py
+│   ├── PbrTerrain-ReflectionAndRefraction-Rendering-Water.frag
+│   ├── PbrTerrain-ReflectionAndRefraction-Rendering-Water.vert
+│   ├── PbrTerrain-ReflectionAndRefraction-Rendering.frag
+│   ├── PbrTerrain-ReflectionAndRefraction-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 06-distortion/
+│   ├── PbrTerrain-Distortion-Rendering-Water.py
+│   ├── PbrTerrain-Distortion-Rendering.py
+│   ├── PbrTerrain-Distortion-Rendering-Water.frag
+│   ├── PbrTerrain-Distortion-Rendering-Water.vert
+│   ├── PbrTerrain-Distortion-Rendering.frag
+│   ├── PbrTerrain-Distortion-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 07-normal-mapping/
+│   ├── PbrTerrain-NormalMapping-Rendering.py
+│   ├── PbrTerrain-NormalMapping-Rendering-Water.frag
+│   ├── PbrTerrain-NormalMapping-Rendering-Water.vert
+│   ├── PbrTerrain-NormalMapping-Rendering.frag
+│   ├── PbrTerrain-NormalMapping-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 08-fresnel/
+│   ├── PbrTerrain-Fresnel-Rendering-Water.py
+│   ├── PbrTerrain-Fresnel-Rendering.py
+│   ├── PbrTerrain-Fresnel-Rendering-Water.frag
+│   ├── PbrTerrain-Fresnel-Rendering-Water.vert
+│   ├── PbrTerrain-Fresnel-Rendering.frag
+│   ├── PbrTerrain-Fresnel-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

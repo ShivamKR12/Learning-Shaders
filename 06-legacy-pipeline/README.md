@@ -70,42 +70,72 @@ python Legacy-Fog-Rendering.py
 
 ### Script Catalog
 
-| Script | Vertex Shader | Fragment Shader | Target Model | Emulated Legacy Feature |
-|---|---|---|---|---|
-| `Legacy-SceneSetup-Rendering.py` | *(Built-in AutoShader)* | *(Built-in AutoShader)* | `models/Sphere` | Baseline scene structure with lighting |
-| `Legacy-ShadelessRendering-Rendering.py` | `Legacy-ShadelessRendering-Rendering.vert` | `Legacy-ShadelessRendering-Rendering.frag` | `models/Sphere` | Unlit / flat shading (`GL_LIGHTING` disabled) |
-| `Legacy-Texture-Rendering.py` | `Legacy-Texture-Rendering.vert` | `Legacy-Texture-Rendering.frag` | `models/Sphere` | Fixed-function texture stage modulation |
-| `Legacy-AmbientLighting-Lighting.py` | `Legacy-AmbientLighting-Lighting.vert` | `Legacy-AmbientLighting-Lighting.frag` | `models/Sphere` | Scene ambient light reflection |
-| `Legacy-DiffuseLighting-Lighting.py` | `Legacy-DiffuseLighting-Lighting.vert` | `Legacy-DiffuseLighting-Lighting.frag` | `models/Sphere` | Single directional light source diffuse |
-| `Legacy-SpecularLighting-Lighting.py` | `Legacy-SpecularLighting-Lighting.vert` | `Legacy-SpecularLighting-Lighting.frag` | `models/Sphere` | View-dependent specular reflection |
-| `Legacy-Fog-Rendering.py` | `Legacy-Fog-Rendering.vert` | `Legacy-Fog-Rendering.frag` | `models/Sphere` | Distance-based depth fog interpolation |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
+|---|---|---|---|
+| [**`01-scene-setup`**](01-scene-setup/README.md) | `Legacy-SceneSetup-Rendering.py` | *(AutoShader)* | Scene Setup |
+| [**`02-shadeless-rendering`**](02-shadeless-rendering/README.md) | `Legacy-ShadelessRendering-Rendering.py` | `Legacy-ShadelessRendering-Rendering.frag`, `Legacy-ShadelessRendering-Rendering.vert` | Shadeless Rendering |
+| [**`03-ambient-lighting`**](03-ambient-lighting/README.md) | `Legacy-AmbientLighting-Lighting.py` | `Legacy-AmbientLighting-Lighting.frag`, `Legacy-AmbientLighting-Lighting.vert` | Ambient Lighting |
+| [**`04-diffuse-lighting`**](04-diffuse-lighting/README.md) | `Legacy-DiffuseLighting-Lighting.py` | `Legacy-DiffuseLighting-Lighting.frag`, `Legacy-DiffuseLighting-Lighting.vert` | Diffuse Lighting |
+| [**`05-specular-lighting`**](05-specular-lighting/README.md) | `Legacy-SpecularLighting-Lighting.py` | `Legacy-SpecularLighting-Lighting.frag`, `Legacy-SpecularLighting-Lighting.vert` | Specular Lighting |
+| [**`06-texture`**](06-texture/README.md) | `Legacy-Texture-Rendering.py` | `Legacy-Texture-Rendering.frag`, `Legacy-Texture-Rendering.vert` | Texture |
+| [**`07-fog`**](07-fog/README.md) | `Legacy-Fog-Rendering.py` | `Legacy-Fog-Rendering.frag`, `Legacy-Fog-Rendering.vert` | Fog |
 
 ### Layout
 
 ```
 06-legacy-pipeline/
-├── Legacy-SceneSetup-Rendering.py              # Baseline scene setup driver
-├── Legacy-ShadelessRendering-Rendering.py      # Flat unlit shader driver
-├── Legacy-ShadelessRendering-Rendering.vert    # Basic MVP transformation
-├── Legacy-ShadelessRendering-Rendering.frag    # Emits constant color
-├── Legacy-Texture-Rendering.py                 # Texture modulation driver
-├── Legacy-Texture-Rendering.vert               # Passes UV coordinates
-├── Legacy-Texture-Rendering.frag               # Samples 2D texture
-├── Legacy-AmbientLighting-Lighting.py          # Ambient lighting driver
-├── Legacy-AmbientLighting-Lighting.vert        # Passes vertex attributes
-├── Legacy-AmbientLighting-Lighting.frag        # Applies uniform ambient term
-├── Legacy-DiffuseLighting-Lighting.py          # Fixed-function diffuse driver
-├── Legacy-DiffuseLighting-Lighting.vert        # Transforms normals to view space
-├── Legacy-DiffuseLighting-Lighting.frag        # Computes N dot L
-├── Legacy-SpecularLighting-Lighting.py         # Specular highlight driver
-├── Legacy-SpecularLighting-Lighting.vert       # View and reflection vector setup
-├── Legacy-SpecularLighting-Lighting.frag       # Evaluates specular exponent
-├── Legacy-Fog-Rendering.py                     # Distance fog driver
-├── Legacy-Fog-Rendering.vert                   # Passes camera-distance metric
-├── Legacy-Fog-Rendering.frag                   # Blends surface color into fog color
-├── cam.py                                      # Free-fly camera controller
-├── Config.prc                                  # Runtime configuration
-└── README.md                                   # Documentation
+├── 01-scene-setup/
+│   ├── Legacy-SceneSetup-Rendering.py
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-shadeless-rendering/
+│   ├── Legacy-ShadelessRendering-Rendering.py
+│   ├── Legacy-ShadelessRendering-Rendering.frag
+│   ├── Legacy-ShadelessRendering-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 03-ambient-lighting/
+│   ├── Legacy-AmbientLighting-Lighting.py
+│   ├── Legacy-AmbientLighting-Lighting.frag
+│   ├── Legacy-AmbientLighting-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 04-diffuse-lighting/
+│   ├── Legacy-DiffuseLighting-Lighting.py
+│   ├── Legacy-DiffuseLighting-Lighting.frag
+│   ├── Legacy-DiffuseLighting-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 05-specular-lighting/
+│   ├── Legacy-SpecularLighting-Lighting.py
+│   ├── Legacy-SpecularLighting-Lighting.frag
+│   ├── Legacy-SpecularLighting-Lighting.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 06-texture/
+│   ├── Legacy-Texture-Rendering.py
+│   ├── Legacy-Texture-Rendering.frag
+│   ├── Legacy-Texture-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 07-fog/
+│   ├── Legacy-Fog-Rendering.py
+│   ├── Legacy-Fog-Rendering.frag
+│   ├── Legacy-Fog-Rendering.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

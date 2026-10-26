@@ -68,36 +68,58 @@ Simulates explosive dispersal and reassembly cycles.
 
 ### Script Catalog
 
-| Script | Vertex Shader | Fragment Shader | Target Model | Deformation Mechanism |
-|---|---|---|---|---|
-| `Minimal-YWave-Deformation.py` | `Minimal-YWave-Deformation.vert` | `Minimal-YWave-Deformation.frag` | `models/smiley` | Sinusoidal vertical displacement |
-| `Minimal-DirectionalWave-Deformation.py` | `Minimal-DirectionalWave-Deformation.vert` | `Minimal-DirectionalWave-Deformation.frag` | `models/smiley` | Directional surface wave modulation |
-| `Minimal-HeightTwist-Deformation.py` | `Minimal-HeightTwist-Deformation.vert` | `Minimal-HeightTwist-Deformation.frag` | `models/box` | Height-dependent rotational shear (twist) |
-| `Minimal-NormalPulse-Deformation.py` | `Minimal-NormalPulse-Deformation.vert` | `Minimal-NormalPulse-Deformation.frag` | `models/smiley` | Inflation/deflation along vertex normals |
-| `Minimal-RadialExplosion-Deformation.py` | `Minimal-RadialExplosion-Deformation.vert` | `Minimal-RadialExplosion-Deformation.frag` | `models/smiley` | Origin-centered radial vertex dispersal |
+### 📚 Sub-Directory Lessons
+
+| Lesson Directory | Python Driver | Shaders | Key Feature |
+|---|---|---|---|
+| [**`01-y-wave`**](01-y-wave/README.md) | `Minimal-YWave-Deformation.py` | `Minimal-YWave-Deformation.frag`, `Minimal-YWave-Deformation.vert` | Y Wave |
+| [**`02-directional-wave`**](02-directional-wave/README.md) | `Minimal-DirectionalWave-Deformation.py` | `Minimal-DirectionalWave-Deformation.frag`, `Minimal-DirectionalWave-Deformation.vert` | Directional Wave |
+| [**`03-height-twist`**](03-height-twist/README.md) | `Minimal-HeightTwist-Deformation.py` | `Minimal-HeightTwist-Deformation.frag`, `Minimal-HeightTwist-Deformation.vert` | Height Twist |
+| [**`04-normal-pulse`**](04-normal-pulse/README.md) | `Minimal-NormalPulse-Deformation.py` | `Minimal-NormalPulse-Deformation.frag`, `Minimal-NormalPulse-Deformation.vert` | Normal Pulse |
+| [**`05-radial-explosion`**](05-radial-explosion/README.md) | `Minimal-RadialExplosion-Deformation.py` | `Minimal-RadialExplosion-Deformation.frag`, `Minimal-RadialExplosion-Deformation.vert` | Radial Explosion |
 
 ### Layout
 
 ```
 02-vertex-deformations/
-├── Minimal-YWave-Deformation.py              # Sine wave displacement driver
-├── Minimal-YWave-Deformation.vert            # Modifies vertex Y coordinate
-├── Minimal-YWave-Deformation.frag            # Surface shading pass
-├── Minimal-DirectionalWave-Deformation.py    # Directional wave driver
-├── Minimal-DirectionalWave-Deformation.vert  # Vector dot-product wave equation
-├── Minimal-DirectionalWave-Deformation.frag  # Shading pass
-├── Minimal-HeightTwist-Deformation.py        # Torsional twist driver
-├── Minimal-HeightTwist-Deformation.vert      # 2D rotation matrix applied along Z
-├── Minimal-HeightTwist-Deformation.frag      # Shading pass
-├── Minimal-NormalPulse-Deformation.py        # Normal inflation driver
-├── Minimal-NormalPulse-Deformation.vert      # Extrudes position along vertex normal
-├── Minimal-NormalPulse-Deformation.frag      # Shading pass
-├── Minimal-RadialExplosion-Deformation.py    # Radial explosion driver
-├── Minimal-RadialExplosion-Deformation.vert  # Pushes vertices outwards from origin
-├── Minimal-RadialExplosion-Deformation.frag  # Shading pass
-├── cam.py                                    # Free-fly camera controller
-├── Config.prc                                 # Runtime configuration
-└── README.md                                  # Documentation
+├── 01-y-wave/
+│   ├── Minimal-YWave-Deformation.py
+│   ├── Minimal-YWave-Deformation.frag
+│   ├── Minimal-YWave-Deformation.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 02-directional-wave/
+│   ├── Minimal-DirectionalWave-Deformation.py
+│   ├── Minimal-DirectionalWave-Deformation.frag
+│   ├── Minimal-DirectionalWave-Deformation.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 03-height-twist/
+│   ├── Minimal-HeightTwist-Deformation.py
+│   ├── Minimal-HeightTwist-Deformation.frag
+│   ├── Minimal-HeightTwist-Deformation.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 04-normal-pulse/
+│   ├── Minimal-NormalPulse-Deformation.py
+│   ├── Minimal-NormalPulse-Deformation.frag
+│   ├── Minimal-NormalPulse-Deformation.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── 05-radial-explosion/
+│   ├── Minimal-RadialExplosion-Deformation.py
+│   ├── Minimal-RadialExplosion-Deformation.frag
+│   ├── Minimal-RadialExplosion-Deformation.vert
+│   ├── cam.py
+│   ├── Config.prc
+│   └── README.md
+├── cam.py
+├── Config.prc
+└── README.md
 ```
 
 ---

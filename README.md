@@ -4,11 +4,13 @@ An end-to-end curriculum and interactive laboratory for learning real-time Compu
 
 The repository spans from bare-minimum programmable pipeline foundations to advanced Physically Based Rendering (PBR), Cook-Torrance microfacet BRDFs, procedural vertex wave simulations, dynamic atmospheric skydomes, multi-layer terrain texture splatting, and complete real-time water shaders with offscreen render-to-texture (RTT) reflections and refractions.
 
+Every individual shader lesson is isolated inside its own dedicated sub-directory with its runnable Python driver, GLSL vertex and fragment shaders, and an in-depth lesson `README.md` tutorial.
+
 ---
 
 ## 🗂️ Curriculum & Module Index
 
-The repository is organized into 10 structured, progressive modules. Each sub-directory includes its own dedicated runnable scripts, vertex/fragment shaders, and comprehensive technical documentation:
+The repository is organized into 10 structured, progressive modules containing **56 self-contained shader lessons**:
 
 | # | Module Directory | Focus & Core Techniques | Key Mathematical Models |
 |---|---|---|---|
@@ -61,25 +63,29 @@ pip install -r requirements.txt
 
 ---
 
-### 2. Running the Demos
+### 2. Running Individual Lessons
 
-You can run any demo directly from the root directory or by navigating into its subfolder:
+Every lesson lives in its own dedicated sub-directory with all needed shaders, assets, camera controls, and configurations. Navigate into any lesson folder to run it:
 
 ```bash
-# Example 1: Run the minimal working shader
-cd 01-minimal-shaders
+# Minimal programmable pipeline demo
+cd 01-minimal-shaders/01-working-shader
 python Minimal-Working-Shader.py
 
-# Example 2: Run Phong specular reflections
-cd ../04-phong-lighting
+# Phong specular reflections
+cd ../../04-phong-lighting/02-diffuse-ambient-specular
 python Phong-Diffuse+Ambient+Specular-Lighting.py
 
-# Example 3: Run the Cook-Torrance PBR BRDF
-cd ../07-pbr-pipeline
+# Cook-Torrance PBR BRDF
+cd ../../07-pbr-pipeline/04-cook-torrance-brdf
 python Pbr-CookTorranceBrdf-Lighting.py
 
-# Example 4: Run the advanced real-time water simulation
-cd ../09-legacy-terrain-water
+# Dynamic Skydome with cloud animation
+cd ../../08-sky-rendering/03-dynamic-skydome
+python ShadelessSky-DynamicSkydome-Rendering.py
+
+# Advanced real-time water simulation
+cd ../../09-legacy-terrain-water/05-reflection-and-refraction
 python LegacyTerrain-ReflectionAndRefraction-Rendering.py
 ```
 
@@ -103,24 +109,80 @@ All interactive 3D demos are equipped with a Blender-style free-fly camera contr
 
 ```
 Learning-Shaders/
-├── 01-minimal-shaders/          # Basic GLSL pipeline, uniforms, textures, discard
-├── 02-vertex-deformations/      # GPU vertex animations, waves, twists, pulses
-├── 03-lambert-lighting/         # Matte diffuse Lambertian cosine reflectance
-├── 04-phong-lighting/           # Glossy specular highlights via reflection vectors
-├── 05-blinn-phong-lighting/     # Halfway vector formulation & 3D point lights
-├── 06-legacy-pipeline/          # Fixed-function pipeline emulation & hardware fog
-├── 07-pbr-pipeline/             # Physically Based Rendering & Cook-Torrance BRDF
-├── 08-sky-rendering/            # Static skyboxes, skydomes, and dynamic skies
-├── 09-legacy-terrain-water/     # Terrain splatting, DuDv water, RTT reflections
-├── 10-pbr-terrain-water/        # PBR terrain splatting, microfacet water, Beer's law
-├── models/                      # Shared 3D models (glTF/egg), terrain, textures, maps
-├── cam.py                       # Blender-style free-fly camera module
-├── Config.prc                   # Panda3D runtime configuration
-├── requirements.txt             # Python dependencies (panda3d)
-├── RoadMap.md                   # Complete pedagogical roadmap & learning syllabus
-├── GLSL-Grammer-Rules.md        # Desktop GLSL syntax and grammar specification
-├── GLSL_ES-Grammer-Rules.md     # Embedded Systems GLSL ES syntax rules
-└── README.md                    # Root documentation and laboratory index
+├── 01-minimal-shaders/                  # Basic GLSL pipeline, uniforms, textures, discard
+│   ├── 01-working-shader/
+│   ├── 02-pass-through/
+│   ├── 03-tint/
+│   ├── 04-pulse/
+│   ├── 05-texture/
+│   ├── 06-alpha-cutoff/
+│   └── 07-uv-distortion/
+├── 02-vertex-deformations/              # GPU vertex animations, waves, twists, pulses
+│   ├── 01-y-wave/
+│   ├── 02-directional-wave/
+│   ├── 03-height-twist/
+│   ├── 04-normal-pulse/
+│   └── 05-radial-explosion/
+├── 03-lambert-lighting/                 # Matte diffuse Lambertian cosine reflectance
+│   ├── 01-diffuse/
+│   ├── 02-diffuse-ambient/
+│   ├── 03-diffuse-ambient-base-color/
+│   └── 04-diffuse-ambient-texture/
+├── 04-phong-lighting/                   # Glossy specular highlights via reflection vectors
+│   ├── 01-diffuse-specular/
+│   ├── 02-diffuse-ambient-specular/
+│   ├── 03-diffuse-ambient-specular-base-color/
+│   └── 04-diffuse-ambient-specular-texture/
+├── 05-blinn-phong-lighting/             # Halfway vector formulation & 3D point lights
+│   ├── 01-point-light/
+│   └── 02-directional-halfway/
+├── 06-legacy-pipeline/                  # Fixed-function pipeline emulation & hardware fog
+│   ├── 01-scene-setup/
+│   ├── 02-shadeless-rendering/
+│   ├── 03-ambient-lighting/
+│   ├── 04-diffuse-lighting/
+│   ├── 05-specular-lighting/
+│   ├── 06-texture/
+│   └── 07-fog/
+├── 07-pbr-pipeline/                     # Physically Based Rendering & Cook-Torrance BRDF
+│   ├── 01-scene-setup/
+│   ├── 02-shadeless-rendering/
+│   ├── 03-ambient-lighting/
+│   ├── 04-cook-torrance-brdf/
+│   ├── 05-texture/
+│   ├── 06-fog/
+│   └── 07-mer-map/
+├── 08-sky-rendering/                    # Static skyboxes, skydomes, and dynamic skies
+│   ├── 01-static-skybox/
+│   ├── 02-static-skydome/
+│   └── 03-dynamic-skydome/
+├── 09-legacy-terrain-water/             # Terrain splatting, DuDv water, RTT reflections
+│   ├── 01-scene-setup/
+│   ├── 02-texture-splatting/
+│   ├── 03-water-plane/
+│   ├── 04-water-shader/
+│   ├── 05-reflection-and-refraction/
+│   ├── 06-distortion/
+│   ├── 07-normal-mapping/
+│   ├── 08-fresnel/
+│   └── 09-soft-edges/
+├── 10-pbr-terrain-water/                # PBR terrain splatting, microfacet water, Beer's law
+│   ├── 01-scene-setup/
+│   ├── 02-texture-splatting/
+│   ├── 03-water-plane/
+│   ├── 04-water-shader/
+│   ├── 05-reflection-and-refraction/
+│   ├── 06-distortion/
+│   ├── 07-normal-mapping/
+│   └── 08-fresnel/
+├── models/                              # Shared 3D models (glTF/egg), terrain, textures, maps
+├── cam.py                               # Blender-style free-fly camera module
+├── Config.prc                           # Panda3D runtime configuration
+├── requirements.txt                     # Python dependencies (panda3d)
+├── RoadMap.md                           # Complete pedagogical roadmap & learning syllabus
+├── GLSL-Grammer-Rules.md                # Desktop GLSL syntax and grammar specification
+├── GLSL_ES-Grammer-Rules.md             # Embedded Systems GLSL ES syntax rules
+└── README.md                            # Root documentation and laboratory index
 ```
 
 ---
