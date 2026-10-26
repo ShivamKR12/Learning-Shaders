@@ -51,7 +51,7 @@ Eliminates tiling repetition and produces rich, varied landscape topography acro
 ### 3. DuDv & Normal Map Ripple Distortion (`LegacyTerrain-Distortion-Rendering.*`, `LegacyTerrain-NormalMapping-Rendering.*`)
 - Samples animated DuDv offset maps scrolled over time:
   $$\mathbf{D} = (\text{texture}(u\_dudv, \mathbf{uv} + \vec{v}_{flow} \cdot t).rg \times 2.0 - 1.0) \times \text{distortion\_factor}$$
-- Distorts projected screen-space coordinates $(\mathbf{uv}_{refl}', \mathbf{uv}_{refr}')$ to produce dynamic, shimmering wave ripples.
+- Distorts projected screen-space coordinates $`(\mathbf{uv}'_{\text{refl}}, \mathbf{uv}'_{\text{refr}})`$ to produce dynamic, shimmering wave ripples.
 - Samples normal maps $\mathbf{N}_{water}$ to compute sharp specular sun glints using Blinn-Phong highlights.
 
 ### 4. Fresnel Reflection vs. Refraction Factor (`LegacyTerrain-Fresnel-Rendering.*`)
@@ -138,4 +138,5 @@ $$\alpha_{edge} = \text{clamp}\left(\frac{\Delta z}{\text{shore\_fade\_distance}
 ## Limitations & Technical Notes
 
 - The offscreen reflection and refraction buffers require Framebuffer Object (FBO) support in Panda3D.
-- Screen-space coordinates must be perspective-divided by $w$ in the fragment shader ($\mathbf{uv} = \frac{\mathbf{v}_{clip}.xy}{\mathbf{v}_{clip}.w} \cdot 0.5 + 0.5$) before indexing the RTT textures.
+- Screen-space coordinates must be perspective-divided by $w$ in the fragment shader ($`\mathbf{uv} = \frac{\mathbf{v}_{\text{clip}}.xy}{\mathbf{v}_{\text{clip}}.w} \cdot 0.5 + 0.5`$) before indexing the RTT textures.
+

@@ -95,4 +95,5 @@ $$\mathbf{C}_{final} = \mathbf{C}_{tex} \cdot \left(\max(\mathbf{N} \cdot \mathb
 ## Limitations & Technical Notes
 
 - Lambertian reflectance models completely matte, non-shiny surfaces (like chalk, paper, or unglazed clay). It contains zero specular reflections or gloss highlights (for shiny surfaces, see `04-phong-lighting` and `05-blinn-phong-lighting`).
-- Light direction must point toward the light source in the dot product calculation ($\mathbf{L} = \text{normalize}(\mathbf{P}_{light} - \mathbf{P}_{frag})$ for point lights or $-\mathbf{D}_{light}$ for directional lights).
+- Light direction must point toward the light source in the dot product calculation ($`\mathbf{L} = \text{normalize}(\mathbf{P}_{\text{light}} - \mathbf{P}_{\text{frag}})`$ for point lights or $`-\mathbf{D}_{\text{light}}`$ for directional lights).
+

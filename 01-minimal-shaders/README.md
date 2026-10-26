@@ -112,3 +112,4 @@ python Minimal-UVDistortion-Shader.py
 
 - Requires an OpenGL 3.2+ Core Profile capable driver.
 - Shaders use `#version 150` for desktop OpenGL compatibility; for mobile OpenGLES 3.0, replace `#version 150` with `#version 300 es` and supply precision qualifiers (`precision mediump float;`).
+

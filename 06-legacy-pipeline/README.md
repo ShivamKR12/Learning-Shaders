@@ -114,3 +114,4 @@ python Legacy-Fog-Rendering.py
 
 - Unlike genuine fixed-function OpenGL drivers which evaluated lighting at every vertex (Gouraud shading), these GLSL implementations evaluate lighting per-fragment (Phong shading) to avoid polygon faceting and interpolation artifacts on low-poly spheres.
 - All fog calculations use true eye-space Euclidean distance $\|\mathbf{P}_{eye}\|$ rather than planar $Z$ depth, preventing distortion when rotating the camera.
+

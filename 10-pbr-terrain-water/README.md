@@ -61,7 +61,7 @@ $$D(\mathbf{H}) = \frac{\alpha^2}{\pi \left( (\mathbf{N} \cdot \mathbf{H})^2 (\a
 As light penetrates through water of depth $d$, shorter wavelengths (blue/green) survive longer while red wavelengths are absorbed rapidly:
 
 $$\mathbf{T}(d) = e^{-\boldsymbol{\sigma}_a \cdot d}$$
-- $\boldsymbol{\sigma}_a$: Spectral absorption coefficients ($\sigma_{red} > \sigma_{green} > \sigma_{blue}$).
+- $\boldsymbol{\sigma}_a$: Spectral absorption coefficients ($`\sigma_{\text{red}} > \sigma_{\text{green}} > \sigma_{\text{blue}}`$).
 - Produces deep turquoise and sapphire color shifts in deep basins while maintaining crystal-clear clarity in shallow shore waters.
 
 ---
@@ -131,3 +131,4 @@ $$\mathbf{T}(d) = e^{-\boldsymbol{\sigma}_a \cdot d}$$
 
 - Water reflection and refraction cameras use clipping planes to prevent rendering unwanted geometry above or below the water plane; this requires hardware clip plane support (`ClipPlaneAttrib`).
 - Depth buffer precision affects underwater light extinction; floating-point depth textures provide the cleanest gradient transitions.
+

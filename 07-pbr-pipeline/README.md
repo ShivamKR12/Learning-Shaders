@@ -121,3 +121,4 @@ Adheres to the glTF 2.0 standard:
 
 - All texture lookups from standard sRGB albedo maps must be linearized via $\mathbf{C}_{lin} = \mathbf{C}_{sRGB}^{2.2}$ before lighting calculations, and gamma-corrected via $\mathbf{C}_{out} = \mathbf{C}_{lin}^{1.0 / 2.2}$ prior to display.
 - Metallic and Roughness textures are already stored in linear color space and must **not** be gamma-converted.
+

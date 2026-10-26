@@ -86,3 +86,4 @@ python ShadelessSky-DynamicSkydome-Rendering.py
 
 - Sky models must be rendered with depth-write disabled (`set_depth_write(False)`) and drawn in the background bin (`set_bin('background', 0)`) so they never occlude foreground terrain or characters.
 - In `ShadelessSky-StaticSkybox-Rendering.vert`, stripping translation from the view matrix ensures the camera can travel thousands of units across the game world without ever reaching the sky boundary.
+

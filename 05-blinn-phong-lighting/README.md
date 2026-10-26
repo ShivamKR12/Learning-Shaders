@@ -43,7 +43,7 @@ $$I_{spec} = \max(\mathbf{N} \cdot \mathbf{H}, 0.0)^\beta$$
 - At grazing viewing angles where Phong reflections can produce harsh cutoff artifacts, Blinn-Phong naturally creates a softer, elliptical highlight consistent with microfacet theory.
 
 ### 2. Point Light Attenuation
-Unlike infinite directional lights (such as sunlight), localized point lights exhibit intensity decay over distance $d = \|\mathbf{P}_{light} - \mathbf{P}_{frag}\|$:
+Unlike infinite directional lights (such as sunlight), localized point lights exhibit intensity decay over distance $`d = \|\mathbf{P}_{\text{light}} - \mathbf{P}_{\text{frag}}\|`$:
 
 $$\text{Attenuation} = \frac{1.0}{k_c + k_l \cdot d + k_q \cdot d^2}$$
 
@@ -81,3 +81,4 @@ $$\text{Attenuation} = \frac{1.0}{k_c + k_l \cdot d + k_q \cdot d^2}$$
 
 - The point light position in `BlinnPhong-PointLight-Lighting.py` is supplied via uniform `light_position` and can be interactively orbited or translated in Python.
 - If $\|\mathbf{L} + \mathbf{V}\| \to 0$ (which only occurs if the light and viewer are in diametrically opposed directions with a back-facing surface), $\mathbf{H}$ evaluates to undefined; the shader uses `max(..., 0.0)` to safeguard against numerical instability.
+

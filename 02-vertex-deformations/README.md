@@ -106,3 +106,4 @@ Simulates explosive dispersal and reassembly cycles.
 
 - Vertex shader deformations do not automatically recalculate lighting normals. For accurate dynamic lighting on heavily deformed surfaces, the tangent frame or analytical surface derivatives ($\frac{\partial \mathbf{v}'}{\partial u}, \frac{\partial \mathbf{v}'}{\partial v}$) should be used to recalculate perturbed normals.
 - Meshes with low polygon densities will produce faceted or rigid deformations; tessellated models (like the Panda3D `smiley` or subdivision spheres) yield the smoothest results.
+

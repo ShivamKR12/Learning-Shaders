@@ -95,3 +95,4 @@ $$\mathbf{C}_{final} = \mathbf{C}_{albedo} \cdot (\mathbf{I}_{ambient} + \mathbf
 
 - The Phong model calculates the reflection vector $\mathbf{R} = \text{reflect}(-\mathbf{L}, \mathbf{N})$. When the angle between $\mathbf{R}$ and $\mathbf{V}$ exceeds $90^\circ$, the highlight terminates abruptly. The Blinn-Phong model (`05-blinn-phong-lighting`) overcomes this limitation by evaluating the halfway vector $\mathbf{H}$.
 - All vectors ($\mathbf{N}$, $\mathbf{L}$, $\mathbf{V}$, $\mathbf{R}$) must be re-normalized inside the fragment shader, as linear vertex interpolation reduces vector lengths.
+
